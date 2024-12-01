@@ -1,0 +1,61 @@
+{% extends 'bases/card.html' %}
+{% block title %}Usuarios del Evento: {{ evento.nombre }}{% endblock %}
+{% block card_title %}Usuarios del Evento: {{ evento.nombre }}{% endblock %}
+{% block card_content %}
+{% include 'bases/messages.html' %}
+
+<div class="mb-3">
+    <a href="{% url 'listar_eventos' %}" class="btn btn-primary me-2">
+        <i class="fa-solid fa-arrow-left fa-xl"></i> Volver a Eventos
+    </a>
+    <a href="{% url 'generar_pdf_asistencias_evento' evento.id %}" class="btn btn-danger">
+        <i class="fa-solid fa-file-pdf fa-xl"></i> Generar PDF
+    </a>
+</div>
+
+<table class="table table-hover fs-6 table-responsive miTabla table-bordered text-center">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Nombre Completo</th>
+            {% for fecha in fechas_evento %}
+                <th class="text-center">Fecha: {{ fecha }}</th>
+            {% endfor %}
+            <th class="text-center">Faltas</th>
+            <th class="text-center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario, data in asistencias_por_usuario %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ usuario.nombres }} {{ usuario.apellidos }}</td>
+            {% for asistencia in data.asistencias %}
+                <td>
+                    {% if asistencia %}
+                        <span class="badge bg-success">Asistió</span>
+                    {% else %}
+                        <span class="badge bg-danger">No Asistió</span>
+                    {% endif %}
+                </td>
+            {% endfor %}
+            <td>{{ data.faltas }}</td>
+            <td>
+                <a href="{% url 'listar_asistencias_usuario' usuario.id %}" class="btn fa-solid fa-magnifying-glass btn-sm" style="color: #007bff;"></a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="{{ fechas_evento|length|add:2 }}" class="text-center">No hay registros disponibles.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
+{% block content %}
+    {% with container_class="w-100" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}

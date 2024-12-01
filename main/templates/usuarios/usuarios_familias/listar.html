@@ -1,0 +1,66 @@
+{% extends 'bases/card.html' %}
+
+{% block title %}
+    {% if is_admin %}
+        Lista de Usuario-Familia
+    {% else %}
+        Mi Familia
+    {% endif %}
+{% endblock %}
+
+{% block card_title %}
+    {% if is_admin %}
+        Lista de Usuario-Familia
+    {% else %}
+        Mi Familia{% if familia_actual %} - {{ familia_actual }}{% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block card_content %}
+    {% if is_admin %}
+    <div class="mb-3">
+        <a href="{% url 'crear_usuario_familia' %}" class="btn btn-primary">Crear Usuario-Familia</a>
+    </div>
+    {% endif %}
+
+    {% if usuario_familias %}
+    <table class="table table-hover fs-6 table-responsive miTabla table-bordered text-center">
+        <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">Usuario</th>
+                <th class="text-center">Parentesco</th>
+                {% if is_admin %}
+                <th class="text-center">Familia</th>
+                <th class="text-center">Acciones</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario_familia in usuario_familias %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ usuario_familia.usuario }}</td>
+                <td>{{ usuario_familia.parentesco }}</td>
+                {% if is_admin %}
+                <td>{{ usuario_familia.familia }}</td>
+                <td>
+                    <a href="{% url 'actualizar_usuario_familia' usuario_familia.pk %}" class="btn fa-solid fa-pen btn-sm" style="color: #ffc107;"></a>
+                    <a href="#" class="btn fa-solid fa-trash-can btn-sm btn-dlt" style="color: #dc3545;" data-type="usuario_familia" data-pk="{{ usuario_familia.pk }}" data-name="{{ usuario_familia.usuario.nombres }} {{ usuario_familia.usuario.apellidos }}"></a>                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-info">
+        <strong>Información:</strong> No hay usuarios en esta familia.
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% with container_class="w-75" %}
+    {{ block.super }}
+  {% endwith %}
+{% endblock %}

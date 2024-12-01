@@ -1,0 +1,21 @@
+{% extends 'bases/card.html' %}
+{% block title %}Registrar Asistencia{% endblock %}
+{% block card_title %}Registrar Asistencia{% endblock %}
+{% block card_content %}
+{% include 'bases/messages.html' %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Crear</button>
+    <a href="{% url 'listar_usuarios_eventos' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+{{ form.media.js }}
+
+{% endblock %}
+{% block content %}
+  {% with container_class="container w-50" %}
+    {{ block.super }}
+  {% endwith %}
+{% endblock %}

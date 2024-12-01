@@ -1,0 +1,23 @@
+<!-- bases/landing/modal.html -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Título del Evento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center p-3"> 
+                    <img id="modalImage" src="" alt="Imagen Ampliada" class="img-fluid" style="max-width: 100%; max-height: 400px; object-fit: contain; border-radius: 15px;">
+                </div>
+                <div>
+                    <h6>Descripción:</h6>
+                    <p class="modal-description" id="eventDescription"></p> 
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

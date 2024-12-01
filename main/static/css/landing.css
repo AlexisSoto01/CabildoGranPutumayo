@@ -1,0 +1,266 @@
+/* Global Styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    padding-top: 76px; 
+}
+
+.limit_h{
+    max-height: calc(100vh - 100px); /* Ajustar para que no toque el navbar */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #2C3E50;
+    font-weight: 700;
+}
+
+.title {
+    color: white;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #007BFF;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/path/to/your-image.jpg') no-repeat center center/cover;
+}
+
+.hero-content {
+    z-index: 2;
+    color: #fff;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    animation: fadeInUp 1.5s ease;
+}
+
+.hero .btn-primary {
+    background-color: #007BFF;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero .btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* Carousel */
+.carousel-item {
+    height: 100vh;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* Gallery Section */
+#gallery {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+.card {
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+    height: 200px;
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.modal-header, .modal-body, .modal-footer {
+    border: none;
+}
+
+/* Footer */
+footer {
+    background-color: #2C3E50;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #007BFF;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .card-img-top {
+        height: 150px;
+    }
+}
+
+
+/* hisotira  */
+
+.lead {
+    font-size: 1.5rem; /* Tamaño de fuente más grande para mayor impacto */
+    font-weight: 300; /* Peso de fuente ligero */
+    line-height: 1.6; /* Mayor espaciado para mejorar la legibilidad */
+}
+
+.text-muted {
+    color: #6c757d !important; /* Color suave para el subtítulo */
+}
+
+.text-justify {
+    text-align: justify; /* Alineación justificada para un aspecto limpio */
+}
+
+h1 {
+    font-size: 3rem; /* Tamaño de fuente mayor para el título */
+    font-weight: 700; /* Negrita para mayor énfasis */
+    color: #1d1d1d; /* Color oscuro para el título */
+    text-transform: uppercase; /* Transformación de texto a mayúsculas */
+}
+
+.container {
+    background-color: #f9f9f9; /* Fondo suave */
+    padding: 40px; /* Mayor padding para más espacio alrededor */
+    border-radius: 15px; /* Bordes redondeados más pronunciados */
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1); /* Sombra más fuerte para dar profundidad */
+}
+
+.bg-light {
+    background-color: #ffffff; /* Fondo blanco para el contenido */
+    border-radius: 10px; /* Bordes redondeados para el contenedor de texto */
+    border: 1px solid #e0e0e0; /* Borde sutil para definir el área de texto */
+}
+
+.shadow-lg {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Sombra para mayor profundidad */
+}
+
+.mb-5 {
+    margin-bottom: 3rem; /* Espaciado inferior para mejorar el flujo visual */
+}
+
+/* mision vision  */
+
+.lead {
+    font-size: 1.5rem; /* Tamaño de fuente aumentado para mayor impacto */
+    font-weight: 300; /* Peso de fuente ligero para un toque moderno */
+    line-height: 1.7; /* Espaciado mejorado para mayor claridad */
+}
+
+.text-muted {
+    color: #6c757d !important; /* Color suave para el subtítulo */
+}
+
+h2 {
+    font-size: 2rem; /* Aumento en el tamaño del encabezado */
+    font-weight: 700; /* Negrita para énfasis en los encabezados */
+}
+
+.container {
+    background-color: #f8f9fa; /* Fondo suave para el contenedor */
+    padding: 40px; /* Padding aumentado para mayor espacio */
+    border-radius: 15px; /* Bordes redondeados más pronunciados */
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidad */
+}
+
+.bg-white {
+    background-color: #ffffff; /* Fondo blanco para los bloques de misión y visión */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 2px solid #e0e0e0; /* Borde sutil para definir el área */
+}
+
+.border-success {
+    border-color: #28a745; /* Color del borde para la misión */
+}
+
+.border-info {
+    border-color: #17a2b8; /* Color del borde para la visión */
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
+}
+
+.mb-4 {
+    margin-bottom: 2rem; /* Espaciado inferior mejorado */
+}
+
+.text-center {
+    text-align: center; /* Centrado del texto en el contenedor */
+}

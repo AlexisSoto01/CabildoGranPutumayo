@@ -1,0 +1,10 @@
+<!-- login/welcome.html -->
+{% extends 'login/bases/cardLogin.html'%}
+{% block title %}Bienvenido{% endblock %}
+{% block card_title %}{% endblock %}
+{%block card_content %}
+<div class="d-grid gap-2 col-6 mx-auto">
+  <a href="{% url 'signin' %}" class="btn btn-outline-dark" role="button">Iniciar Sesión</a>
+  <a href="{% url 'signup' %}" class="btn btn-outline-dark" role="button">Registrarse</a>
+</div>
+{% endblock %}

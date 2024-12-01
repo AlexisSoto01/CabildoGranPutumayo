@@ -1,0 +1,117 @@
+{% extends 'bases/landing/base.html' %}
+{% load static %}  <!-- Asegúrate de agregar esto -->
+{% block title %}ACERCA DE{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-3">ACERCA DE</h1>
+    <p class="text-center mb-4">
+        <img src="https://sibcolombia.net/wp-content/uploads/2017/08/logo-itp.png" alt="Logo" class="img-fluid mb-2" style="max-width: 150px;" />
+    </p>
+
+   <!-- Sección Acerca de -->
+   <div class="row g-4">
+       <!-- Desarrollador 1 -->
+       <div class="col-12 col-sm-6 col-lg-4">
+           <div class="card h-100 shadow-sm">
+               <img src="{% static 'img/logos/perfil.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Alexis Fernando Soto Alvarez" style="width: 120px; height: 120px; object-fit: cover;">
+               <div class="card-body">
+                   <h5 class="card-title text-danger">Alexis Fernando Soto Alvarez</h5>
+                   <p class="card-text">Desarrollador Backend</p>
+                   <p class="card-text">
+                       Email: <a href="mailto:alex00@gmail.com" class="text-danger">alex00@gmail.com</a>
+                   </p>
+               </div>
+           </div>
+       </div>
+
+       <!-- Desarrollador 2 -->
+       <div class="col-12 col-sm-6 col-lg-4">
+           <div class="card h-100 shadow-sm">
+               <img src="{% static 'img/logos/perfil.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Heidy Ameli Muñoz Tez" style="width: 120px; height: 120px; object-fit: cover;">
+               <div class="card-body">
+                   <h5 class="card-title text-danger">Heidy Ameli Muñoz Tez</h5>
+                   <p class="card-text">Desarrolladora FrontEnd</p>
+                   <p class="card-text">
+                       Email: <a href="mailto:maria.gomez@gmail.com" class="text-danger">maria.gomez@gmail.com</a>
+                   </p>
+               </div>
+           </div>
+       </div>
+
+       <!-- Desarrollador 3 -->
+       <div class="col-12 col-sm-6 col-lg-4">
+           <div class="card h-100 shadow-sm">
+               <img src="{% static 'img/logos/perfil.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Edgar Huelgas" style="width: 120px; height: 120px; object-fit: cover;">
+               <div class="card-body">
+                   <h5 class="card-title text-danger">Edgar Huelgas</h5>
+                   <p class="card-text">Asesor de la Empresa</p>
+                   <p class="card-text">
+                       Email: <a href="mailto:carlos.design@gmail.com" class="text-danger">carlos.design@gmail.com</a>
+                   </p>
+               </div>
+           </div>
+       </div>
+
+       <!-- Desarrollador 4 -->
+       <div class="col-12 col-sm-6 col-lg-4">
+           <div class="card h-100 shadow-sm">
+               <img src="{% static 'img/logos/perfil.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Jaime Rios" style="width: 120px; height: 120px; object-fit: cover;">
+               <div class="card-body">
+                   <h5 class="card-title text-danger">Jaime Rios</h5>
+                   <p class="card-text">Asesor ITP</p>
+                   <p class="card-text">
+                       Email: <a href="mailto:lucia.devops@gmail.com" class="text-danger">lucia.devops@gmail.com</a>
+                   </p>
+               </div>
+           </div>
+       </div>
+
+       <!-- Desarrollador 5 (Tarjeta con Redirección) -->
+       <div class="col-12 col-sm-6 col-lg-4">
+           <div class="card h-100 shadow-sm">
+               <img src="{% static 'img/logos/perfil.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Ricardo Fajardo" style="width: 120px; height: 120px; object-fit: cover;">
+               <div class="card-body">
+                   <h5 class="card-title text-danger">Ricardo Fajardo</h5>
+                   <p class="card-text">Asesor ITP</p>
+                   <p class="card-text">
+                       Email: <a href="mailto:lucia.devops@gmail.com" class="text-danger">lucia.devops@gmail.com</a>
+                   </p>
+               </div>
+           </div>
+       </div>
+   </div>
+    
+
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-lg-6">
+            <div class="bg-light p-3 rounded shadow-sm text-center">
+                <h4 class="mb-3">Tecnologías Utilizadas</h4>
+                <div class="d-flex justify-content-around">
+                    <div class="text-center">
+                        <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" class="icon" style="width: 80px;" />
+                        <p>HTML5</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap" class="icon" style="width: 80px;" />
+                        <p>Bootstrap</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" class="icon" style="width: 80px;" />
+                        <p>MySQL</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://img.shields.io/badge/python-3776AB.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python" class="icon" style="width: 80px;" />
+                        <p>Python</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://img.shields.io/badge/django-%23092F51.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django" class="icon" style="width: 80px;" />
+                        <p>Django</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

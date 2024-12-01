@@ -1,0 +1,178 @@
+<!-- usuarios/crear.html -->
+
+{% extends 'bases/card.html' %}
+{% block title %}Registrar Usuario{% endblock %}
+{% block card_title %}Registrar Usuario{% endblock %}
+{% block card_content %}
+{% include 'bases/messages.html' %}
+
+<form method="post">
+  {% csrf_token %}
+
+  <div class="row">
+    <!-- Primera columna -->
+    <div class="col-md-6">
+        <div class="mb-3">
+            {{ form.nombres.label_tag }} 
+            {{ form.nombres }} 
+            {% if form.nombres.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.nombres.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.identificacion.label_tag }} 
+            {{ form.identificacion }} 
+            {% if form.identificacion.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.identificacion.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.zona.label_tag }} 
+            {{ form.zona }}
+            {% if form.zona.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.zona.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.fecha_nacimiento.label_tag }} 
+            {{ form.fecha_nacimiento }}
+            {% if form.fecha_nacimiento.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.fecha_nacimiento.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.telefono.label_tag }} 
+            {{ form.telefono }}
+            {% if form.telefono.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.telefono.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.direccion.label_tag }} 
+            {{ form.direccion }}
+            {% if form.direccion.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.direccion.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.genero.label_tag }} 
+            {{ form.genero }}
+            {% if form.genero.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.genero.errors }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Segunda columna -->
+    <div class="col-md-6">
+        <div class="mb-3">
+            {{ form.apellidos.label_tag }} 
+            {{ form.apellidos }} 
+            {% if form.apellidos.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.apellidos.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.n_documento.label_tag }} 
+            {{ form.n_documento }}
+            {% if form.n_documento.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.n_documento.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.localidad.label_tag }} 
+            {{ form.localidad }}
+            {% if form.localidad.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.zona.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.estadoCivil.label_tag }} 
+            {{ form.estadoCivil }}
+            {% if form.estadoCivil.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.estadoCivil.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.escolaridad.label_tag }} 
+            {{ form.escolaridad }}
+            {% if form.escolaridad.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.escolaridad.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.profesion.label_tag }} 
+            {{ form.profesion }}
+            {% if form.profesion.errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.profesion.errors }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+  </div>
+
+  <div class="d-grid gap-2 col-3 mx-auto pt-3 pb-3">
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary me-2">Guardar</button>
+      <a class="btn btn-secondary" href="{% url 'listar_usuarios' %}">Cancelar</a>
+    </div>
+  </div>
+
+</form>
+
+<script>
+    $(document).ready(function(){
+        $('#zona-select').change(function(){
+            var zonaId = $(this).val();
+            $.ajax({
+                url: '{% url "get_localidades" %}',
+                data: {
+                    'zona': zonaId
+                },
+                success: function(data){
+                    $('#localidad-select').empty(); // Limpia el dropdown de localidades
+                    $.each(data, function(index, localidad) {
+                        $('#localidad-select').append($('<option></option>').attr('value', localidad.id).text(localidad.nombre));
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error en la solicitud AJAX:', error);
+                }
+            });
+        });
+    });
+</script>
+
+
+{% endblock %}
+{% block content %}
+  {% with container_class="w-50" %}
+    {{ block.super }}
+  {% endwith %}
+{% endblock %}
+

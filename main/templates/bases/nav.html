@@ -1,0 +1,247 @@
+<!-- bases/nav.html -->
+ 
+{% load static %}
+<nav class="navbar bg-body-terciario fixed-top bg-dark custom-navbar">
+  <div class="container-fluid ms-5 me-5">
+    <div class="d-flex align-items-center">
+      {% if user.is_authenticated and is_admin %}
+      <button 
+        class="navbar-toggler bg-white"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      {% endif %}
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="{% static 'img/logos/LogoWhite.png' %}" class="ms-4" alt="Logo de la empresa" height="50">
+      </a>
+    </div>
+    <ul class="nav justify-content-end nav-list">
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'index' %}">Inicio</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Nosotros
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+          <li>
+            <a class="dropdown-item text-white" href="{% url 'historia' %}">
+              <i class="fa-solid fa-book-open"></i> - Historia
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item text-white" href="{% url 'acerca_de' %}">
+              <i class="fa-solid fa-circle-info"></i> - Acerca De
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'cronograma_eventos' %}">Cronograma de Eventos</a>
+      </li>
+      {% if not user.is_authenticated %}
+      <!-- Si el usuario NO está autenticado, mostrar "Iniciar sesión" y "Crear cuenta" -->
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Acceder
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+          <li>
+            <a class="dropdown-item text-white" href="{% url 'signin' %}">
+              <i class="fa-solid fa-arrow-right-to-bracket"></i> - Iniciar sesión
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item text-white" href="{% url 'signup' %}">
+              <i class="fa-solid fa-door-open"></i> - Crear una cuenta
+            </a>
+          </li>
+        </ul>
+      </li>
+      {% else %}
+      <!-- Si el usuario está autenticado, mostrar "otras opcs" -->
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ user.usuario.nombres }} {{ user.usuario.apellidos }}Mis Datos
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+          <li>
+            <a class="dropdown-item text-white" href="{% url 'ver_infopersonal' %}">
+              <i class="fa-solid fa-id-card"></i> - Mis Datos
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item text-white" href="{% url 'ver_mifamilia' %}">
+              <i class="fa-solid fa-house-chimney-window"></i> - MiFamilia
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item text-white" href="{% url 'logout' %}">
+              <i class="fa-solid fa-sign-out-alt"></i> - Cerrar sesión
+            </a>
+          </li>
+        </ul>
+      </li>
+      {% endif %}
+    </ul>
+
+    <div
+      class="offcanvas offcanvas-start bg-dark"
+      tabindex="-1"
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+    >
+      <div
+        class="offcanvas-header d-flex justify-content-between align-items-center"
+      >
+        <h5
+          class="offcanvas-title text-white mx-auto"
+          id="offcanvasNavbarLabel"
+        >
+        Menu 
+        </h5>
+        <button
+          type="button"
+          class="btn-close bg-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <ul class="nav-list navbar-nav justify-content-start flex-grow-1 pe-3">
+          <ul class="nav-list navbar-nav justify-content-start flex-grow-1 pe-3">
+
+            {% if user.is_authenticated and is_admin %}
+            
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Registrar
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+                <li>
+                  <a
+                    class="dropdown-item text-white"
+                    href="{% url 'crear_usuario' %}"
+                  >
+                    <i class="fa-solid fa-user"></i> - Usuario
+                  </a>
+                </li>
+               
+                <li>
+                  <a
+                    class="dropdown-item text-white"
+                    href="{% url 'crear_evento' %}"
+                  >
+                    <i class="fa-solid fa-calendar-days"></i> - Evento
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item text-white"
+                    href="{% url 'crear_familia' %}"
+                  >
+                    <i class="fa-solid fa-house-chimney-window"></i> - Familia
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item text-white"
+                    href="{% url 'crear_usuario_familia' %}"
+                  >
+                    <i class="fa-solid fa-people-roof"></i> - Miembros de familia
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+  
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Gestionar
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+                <li>
+                  <a
+                    class="dropdown-item text-white"
+                    href="{% url 'listar_usuarios' %}"
+                  >
+                    <i class="fa-solid fa-user"></i> - Usuarios
+                  </a>
+                </li>
+                
+                <li>
+                  <a
+                    class="dropdown-item text-white"
+                    href="{% url 'listar_eventos' %}"
+                  > 
+                    <i class="fa-solid fa-calendar-days"></i> - Eventos
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item text-white"
+                    href="{% url 'listar_familias' %}"
+                  >
+                    <i class="fa-solid fa-people-roof"></i> - Familias
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item text-white"
+                    href="{% url 'listar_usuario_familia' %}"
+                  >
+                    <i class="fa-solid fa-people-roof"></i> - Miembros de familia
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            {% endif %}
+              <!-- CERRAR SESION -->
+              {% if user.is_authenticated %}
+
+              <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'logout' %}">Cerrar Sesión</a>
+              </li>
+              {% endif %}
+            </li>
+  
+          </ul>
+        </ul>
+        <!--<form class="d-flex mt-3" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Buscar"
+            aria-label="Buscar"
+          />
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>-->
+      </div>
+    </div>
+  </div>
+</nav>

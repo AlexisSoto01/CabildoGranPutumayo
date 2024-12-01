@@ -1,0 +1,28 @@
+<!-- login/signin.html -->
+{% extends 'login/bases/cardLogin.html' %}
+{% block title %}Iniciar Sesión{% endblock %}
+{% block card_title%}{% endblock %} 
+
+{% block card_content %}
+<form action="/signin/" method="POST">
+  {% csrf_token %}
+  <div class="d-flex justify-content-center flex-column align-items-center">
+    <div class="mb-3">{{ formAuth.username }}</div>
+    <div class="mb-3">{{ formAuth.password }}</div>
+    {% if error %}
+    <div class="alert alert-danger fs-6" role="alert">
+    {{ error }}
+    </div>
+    {% endif %}
+    <div class="d-grid col-8 mx-auto">
+      <button class="btn btn-outline-dark">Iniciar Sesión</button>
+    </div>
+  </div>
+</form>
+
+<!-- Botón para ir al index.html -->
+<div class="d-grid col-8 mx-auto mt-3">
+  <a href="{% url 'index' %}" class="btn btn-secondary">Ir al Inicio</a>
+</div>
+
+{% endblock %}

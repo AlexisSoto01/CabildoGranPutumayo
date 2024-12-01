@@ -1,0 +1,47 @@
+{% extends 'bases/card.html' %}
+{% block title %}Lista Asistencia{% endblock %}
+{% block card_title %}Lista Asistencia{% endblock %}
+{% block card_content %}
+{% include 'bases/messages.html' %}
+
+<a href="{% url 'crear_usuario_evento' %}" class="btn btn-primary mb-3">Crear Relación Usuario-Evento</a>
+<table class="table table-hover fs-6 table-responsive miTabla table-bordered text-center">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Usuario</th>
+            <th class="text-center">Evento</th>
+            <th class="text-center">Fecha de Asistencia</th>
+            <th class="text-center">Asistencia</th>
+            <th class="text-center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario_evento in usuarios_eventos %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ usuario_evento.usuario }}</td>
+                <td>{{ usuario_evento.evento }}</td>
+                <td>{{ usuario_evento.fecha_asistencia }}</td>
+                <td>
+                    {% if usuario_evento.asistencia %}
+                        <span class="badge bg-success">Asistió</span>
+                    {% else %}
+                        <span class="badge bg-danger">No Asistió</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'actualizar_usuario_evento' usuario_evento.pk %}" class="btn btn-warning">Editar</a>
+                    <a href="#" class="btn btn-danger btn-delete" data-type="usuario_evento" data-pk="{{ usuario_evento.pk }}" data-name="{{ usuario_evento.usuario.nombres }} {{ usuario_evento.usuario.apellidos }}">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %} 
+{% block content %} 
+  {% with container_class="w-100" %}
+    {{ block.super }} 
+  {% endwith %} 
+{% endblock %}

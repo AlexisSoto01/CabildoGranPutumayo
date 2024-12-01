@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Usuarios</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 5mm; /* Márgenes ajustados para maximizar el espacio */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            color: #333; /* Color de texto oscuro para mejor contraste */
+            background-color: #fff; /* Fondo blanco para una apariencia limpia */
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px; /* Tamaño de fuente del título */
+            margin-bottom: 15px; /* Espaciado inferior */
+            border-bottom: 1px solid #333; /* Línea inferior para separar el título */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Para eliminar espacios entre bordes */
+            margin-bottom: 15px; /* Espaciado inferior para separación */
+        }
+
+        th {
+            background-color: #f0f0f0; /* Fondo gris claro para encabezados */
+            color: #333; /* Texto oscuro en los encabezados */
+            padding: 4px; /* Espacio interno reducido */
+            text-align: center;
+            font-weight: bold; /* Negrita para los encabezados */
+            font-size: 10px; /* Tamaño de fuente reducido para encabezados */
+            border: 1px solid #999; /* Borde gris para encabezados */
+        }
+
+        td {
+            border: 1px solid #999; /* Borde gris suave */
+            padding: 4px; /* Espacio interno reducido en las celdas */
+            text-align: center;
+            font-size: 12px; /* Tamaño de fuente más pequeño para contenido */
+            overflow-wrap: break-word; /* Ajuste de palabras en caso de texto largo */
+        }
+
+        /* Ajustes de ancho de columna para asegurar que se muestren todos los campos */
+        .familia { width: 10%; }
+        .documento { width: 15%; }
+        .nombre-completo { width: 20%; }
+        .edad { width: 5%; }
+        .genero { width: 7%; }
+        .estado-civil { width: 10%; }
+        .profesion { width: 10%; }
+        .escolaridad { width: 5%; }
+        .direccion { width: 15%; }
+        .celular { width: 8%; }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 10px; /* Tamaño de fuente pequeño para el pie de página */
+            color: #666; /* Color gris para el texto del pie de página */
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de Usuarios</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="familia">Familia</th>
+                <th class="documento">Documento</th>
+                <th class="nombre-completo">Nombre Completo</th>
+                <th class="edad">Edad</th>
+                <th class="genero">Género</th>
+                <th class="estado-civil">Estado Civil</th>
+                <th class="profesion">Profesión</th>
+                <th class="escolaridad">Escolaridad</th>
+                <th class="direccion">Dirección</th>
+                <th class="celular">Celular</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{% for uf in usuario.familias %}{{ uf.familia.n_familia }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                <td>{{ usuario.identificacion.codigo }} - {{ usuario.n_documento }}</td>
+                <td>{{ usuario.nombres }} {{ usuario.apellidos }}</td>
+                <td>{{ usuario.calcular_edad }}</td>
+                <td>{{ usuario.genero.codigo }}</td>
+                <td>{{ usuario.estadoCivil.codigo }}</td>
+                <td>{{ usuario.profesion }}</td>
+                <td>{{ usuario.escolaridad.codigo }}</td>
+                <td>{{ usuario.zona }} {{ usuario.localidad }} - {{ usuario.direccion }}</td>
+                <td>{{ usuario.telefono }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <footer>
+        © {{ current_year }} Gran Putumayo Los Pastos. Todos los derechos reservados.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% extends 'bases/card.html' %}
+{% block title %}Asistencia{% endblock %}
+{% block card_title %}Asistencias de {{ usuario.nombres }} {{ usuario.apellidos }}{% endblock %}
+{% block card_content %}
+{% include 'bases/messages.html' %}
+
+<a href="{% url 'listar_usuarios_por_evento' evento_id %}" class="btn btn-secondary mb-3">Volver a lista de asistencia</a>
+<table class="table table-hover fs-6 table-responsive miTabla table-bordered text-center">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Nombre Completo</th>
+            <th class="text-center">Evento</th>
+            <th class="text-center">Fecha de Asistencia</th>
+            <th class="text-center">Asistencia</th>
+            <th class="text-center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario_evento in usuarios_eventos %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ usuario_evento.usuario }}</td>
+                <td>{{ usuario_evento.evento }}</td>
+                <td>{{ usuario_evento.fecha_asistencia }}</td>
+                <td>
+                    {% if usuario_evento.asistencia %}
+                        <span class="badge bg-success">Asistió</span>
+                    {% else %}
+                        <span class="badge bg-danger">No Asistió</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'actualizar_usuario_evento' usuario_evento.pk %}" class="btn fa-solid fa-pen btn-sm" style="color: #ffc107;"></a>
+                    <a href="#" class="btn fa-solid fa-trash-can btn-sm btn-dlt" style="color: #dc3545;" data-type="usuario_evento" data-pk="{{ usuario_evento.pk }}" data-name="{{ usuario_evento.usuario.nombres }} {{ usuario_evento.usuario.apellidos }}"></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %} 
+{% block content %} 
+  {% with container_class="w-100" %}
+    {{ block.super }} 
+  {% endwith %} 
+{% endblock %}

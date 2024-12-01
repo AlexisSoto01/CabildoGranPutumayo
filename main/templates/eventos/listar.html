@@ -1,0 +1,62 @@
+<!-- eventos/listar.html -->
+
+{% extends 'bases/card.html' %}
+{% block title %}Listado de Eventos{% endblock %}
+{% block card_title %}Listado de Eventos{% endblock %}
+{% block card_content %}
+{% include 'bases/messages.html' %}
+
+    <a href="{% url 'crear_evento' %}" class="btn btn-primary mb-3">Registrar Evento</a>
+
+    <table class="table table-hover fs-6 table-responsive miTabla table-bordered text-center">
+      <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th class="text-center">Nombre</th>
+          <th class="text-center">Descripción</th>
+          <th class="text-center">Imagen</th>
+          <th class="text-center">Fecha Inicio</th>
+          <th class="text-center">Fecha Fin</th>
+          <th class="text-center">Favorito</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for evento in eventos %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ evento.nombre }}</td>
+            <td>{{ evento.descripcion }}</td>
+            <td>
+                {% if evento.imagen %}
+                <img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}" width="100">
+                {% else %}
+                No hay imagen
+                {% endif %}
+            </td>
+            <td>{{ evento.fecha_inicio|date:"Y-m-d" }}</td>
+            <td>{{ evento.fecha_fin|date:"Y-m-d" }}</td>                
+            <td>
+                {% if evento.es_favorito %}
+                <span class="text-success">Sí</span>
+                {% else %}
+                <span class="text-danger">No</span>
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'actualizar_evento' evento.pk %}" class="btn fa-solid fa-pen btn-sm" style="color: #ffc107;"></a>
+                <a href="#" class="btn fa-solid fa-trash-can btn-sm btn-dlt" style="color: #dc3545;" data-type="evento" data-pk="{{ evento.pk }}" data-name="{{ evento.nombre }}"></a>                    
+                <a href="{% url 'listar_usuarios_por_evento'  evento.pk %}" class="btn fa-solid fa-clipboard-list btn-sm" style="color: #6c757d;"></a>
+                <a href="{% url 'registrar_usuario_a_evento' evento.pk %}" class="btn fa-solid fa-magnifying-glass btn-sm" style="color: #007bff;"></a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+{% endblock %} 
+{% block content %} 
+  {% with container_class="w-100" %}
+    {{ block.super }} 
+  {% endwith %} 
+{% endblock %}

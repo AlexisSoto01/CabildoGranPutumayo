@@ -1,0 +1,294 @@
+{% extends 'bases/landing/base.html' %}
+{% load static %}
+{% block title %}GRAN PUTUMAYO LOS PASTOS{% endblock %}
+
+{% block content %}
+<section class="hero d-flex align-items-center justify-content-center position-relative" style="height: 80vh;">
+    <div id="carouselHero" class="carousel slide w-100 h-100" data-bs-ride="carousel">
+        <div class="carousel-inner h-100">
+            <div class="carousel-item active"><img class="d-block w-100 h-100 object-cover" src="{% static 'img/logos/img1.jpg' %}" alt="Primera imagen"></div>
+            <div class="carousel-item"><img class="d-block w-100 h-100 object-cover" src="{% static 'img/logos/img2.png' %}" alt="Segunda imagen"></div>
+            <div class="carousel-item"><img class="d-block w-100 h-100 object-cover" src="{% static 'img/logos/img3.png' %}" alt="Tercera imagen"></div>
+            <div class="carousel-item"><img class="d-block w-100 h-100 object-cover" src="{% static 'img/logos/inti.png' %}" alt="Tercera imagen"></div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselHero" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselHero" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="hero-content text-center text-light position-absolute top-50 start-50 translate-middle">
+        <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown title">Explora lo Mejor del Gran Putumayo</h1>
+        <p class="lead mb-5 animate__animated animate__fadeInUp">Descubre nuestros eventos y cultura con una experiencia única.</p>
+        <a href="#gallery" class="btn btn-primary btn-lg px-4 py-2">Explorar Galería</a>
+    </div>
+</section>
+
+<!-- Misión y Visión Section -->
+<div class="container mt-5">
+    <h1 class="text-center mb-4 font-weight-bold text-primary">Misión y Visión</h1>
+    <div class="row align-items-center mb-5">
+        <!-- Misión Section -->
+        <div class="col-md-6 text-center text-md-start">
+            <h2 class="text-3xl font-bold text-[#641e16]">Nuestra Misión</h2>
+            <p class="mt-4 text-[#4A4A4A]">
+                Fortalecer el Plan de Vida del Pueblo Indígena Pastos, proceso que se desarrolla a partir de una metodología propia, que se consolida desde la minga, la tulpa, el payacuar, el círculo de la palabra, la chagra. Este proceso analiza colectivamente dimensiones espirituales, culturales, naturales, sociales, políticas y económicas. El objetivo es comprender el territorio desde una perspectiva trasversal, amar nuestras raíces, y formar comuneros íntegros que fortalezcan su Pueblo y cumplan con la tarea encomendada por sus ancestros.
+            </p>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="{% static 'img/logos/imgv.jpg' %}" 
+                 class="img-fluid rounded-lg shadow-lg" 
+                 alt="Misión" 
+                 style="border-radius: 15px; max-height: 300px; object-fit: cover;">
+        </div>
+    </div>
+
+    <div class="row align-items-center">
+        <!-- Visión Section -->
+        <div class="col-md-6 text-center">
+            <img src="{% static 'img/logos/imgm.jpg' %}" 
+                 class="img-fluid rounded-lg shadow-lg" 
+                 alt="Visión" 
+                 style="border-radius: 15px; max-height: 300px; object-fit: cover;">
+        </div>
+        <div class="col-md-6 text-center text-md-start">
+            <h2 class="text-3xl font-bold text-[#641e16]">Nuestra Visión</h2>
+            <p class="mt-4 text-[#4A4A4A]">
+                El Pueblo Pastos del Putumayo es y será un territorio diverso, espiritual y ancestralmente fortalecido, donde se promueva la soberanía alimentaria desde la chagra, la educación desde los sitios sagrados, y el uso adecuado del entorno y elementos propios. Todo esto se hará en equilibrio y armonía con la Pachamama, respetando la cultura y cosmovisión como legado de los Mayores. Este esfuerzo estará articulado con procesos institucionales locales, departamentales, nacionales e internacionales para el buen vivir.
+            </p>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <p class="font-weight-light text-muted">
+            Juntos, forjamos un camino hacia un futuro vibrante. Gracias por ser parte de nuestra misión y visión. ¡Hagamos historia juntos!
+        </p>
+    </div>
+</div>
+
+<!-- Glossary and Symbology Section -->
+<section class="py-5">
+    <div class="container text-center">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <a href="{% url 'historia' %}#glosario" class="text-decoration-none">
+                    <div class="card shadow-sm">
+                        <img src="{% static 'img/logos/img4.png' %}" class="card-img-top" alt="Glosario">
+                        <div class="card-body">
+                            <h3 class="card-title text-success">Glosario</h3>
+                            <p class="text-muted">Explora los términos clave de nuestra cultura.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="{% url 'historia' %}#simbologia" class="text-decoration-none">
+                    <div class="card shadow-sm">
+                        <img src="{% static 'img/logos/img5.png' %}" class="card-img-top" alt="Simbología">
+                        <div class="card-body">
+                            <h3 class="card-title text-success">Simbología</h3>
+                            <p class="text-muted">Descubre los símbolos representativos de nuestra comunidad.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div id="gallery" class="container mt-5 p-5">
+    <h2 class="text-center mb-5 fw-bold" style="color: #2C3E50;">Galería de Eventos</h2>
+    <div class="row g-4">
+        {% for evento in eventos %}
+            <div class="col-lg-4 col-md-6">
+                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#imageModal" 
+                   data-image="{{ evento.imagen.url }}" 
+                   data-title="{{ evento.nombre }}" 
+                   data-description="{{ evento.descripcion }}">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark fw-bold">{{ evento.nombre }}</h5>
+                            <p class="card-text text-muted">{{ evento.descripcion|truncatewords:15 }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <section id="about" class="bg-light py-5">
+        <div class="container text-center">
+            <h2 class="display-5 fw-bold text-danger mb-5">Acerca de los Desarrolladores</h2>
+            <div class="row g-4">
+                <!-- Desarrollador 1 -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <a href="{% url 'acerca_de' %}#about" class="text-decoration-none">
+                            <img src="{% static 'img/logos/perfil.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Alexis Fernando Soto Alvarez" style="width: 120px; height: 120px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title text-danger">Alexis Fernando Soto Alvarez</h5>
+                                <p class="card-text">Desarrollador Backend</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Desarrollador 2 -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <a href="{% url 'acerca_de' %}#about" class="text-decoration-none">
+                            <img src="{% static 'img/logos/perfil.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Heidy Ameli Muñoz Tez" style="width: 120px; height: 120px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title text-danger">Heidy Ameli Muñoz Tez</h5>
+                                <p class="card-text">Desarrolladora FrontEnd</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Desarrollador 3 -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <a href="{% url 'acerca_de' %}#about" class="text-decoration-none">
+                            <img src="{% static 'img/logos/perfil.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Edgar Huelgas" style="width: 120px; height: 120px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title text-danger">Edgar Huelgas</h5>
+                                <p class="card-text">Asesor de la Empresa</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section id="Contact" class="bg-white py-5">
+    <div class="container mx-auto">
+        <h2 class="text-3xl font-bold text-[#641e16] mb-8 text-center">Contáctenos</h2>
+        <div class="d-flex justify-content-center flex-wrap gap-4">
+            <!-- Dirección -->
+            <div class="card flex-row align-items-center shadow-sm border-0" style="width: 320px;">
+                <div class="p-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#641e16]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C8.13401 2 5 5.13401 5 9C5 14.25 12 21.75 12 21.75C12 21.75 19 14.25 19 9C19 5.13401 15.866 2 12 2ZM12 11C10.8954 11 10 10.1046 10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9C14 10.1046 13.1046 11 12 11Z" />
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-[#641e16]">Dirección</h5>
+                    <p class="card-text text-[#4A4A4A]">Calle 123, Barrio Centro, Putumayo, Colombia</p>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="card flex-row align-items-center shadow-sm border-0" style="width: 320px;">
+                <div class="p-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#641e16]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8M16 12L12 16M16 12L12 8M21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12Z" />
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-[#641e16]">Email</h5>
+                    <p class="card-text text-[#4A4A4A]">contacto@granputumayo.org</p>
+                </div>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="card flex-row align-items-center shadow-sm border-0" style="width: 320px;">
+                <div class="p-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#641e16]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5C3 5 5 7 8 10C11 13 13 15 15 18C16.5 19.5 19 21 19 21C19 21 19.75 19.25 19.75 17.5C19.75 15.75 18.5 14.5 18.5 14.5L14.25 10.25M10.75 6.75C9.5 5.5 8.5 4.5 7.5 4.5C6.5 4.5 5.5 5.5 5.5 6.5C5.5 7.5 6.5 8.5 7.75 9.75M17.25 19.25C18 20 18.75 20.75 19.5 21.5" />
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-[#641e16]">Teléfono</h5>
+                    <p class="card-text text-[#4A4A4A]">+57 123 456 789</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero .carousel-item {
+        height: 80vh;
+    }
+    .hero {
+        position: relative;
+    }
+
+    .carousel-item {
+        height: 100%;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hero-content {
+        z-index: 10;
+    }
+
+    .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Estilo adicional para bordes e imágenes */
+    .rounded-lg {
+        border-radius: 15px !important;
+    }
+
+    /* Ajustes en dispositivos más pequeños */
+    @media (max-width: 768px) {
+        .col-md-6 {
+            margin-bottom: 20px;
+        }
+    }
+</style>
+
+
+
+<script>
+    var myCarousel = document.querySelector('#carouselHero');
+    var carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 5000,
+        ride: 'carousel'
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var imageModal = document.getElementById('imageModal');
+        imageModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var image = button.getAttribute('data-image');
+            var title = button.getAttribute('data-title');
+            var description = button.getAttribute('data-description');
+
+            var modalImage = imageModal.querySelector('#modalImage');
+            var modalTitle = imageModal.querySelector('.modal-title');
+            var modalDescription = imageModal.querySelector('#eventDescription');
+
+            modalImage.src = image;
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+        });
+    });
+</script>
+{% endblock %}

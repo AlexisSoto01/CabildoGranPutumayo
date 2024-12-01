@@ -1,0 +1,19 @@
+body {
+    padding-top: 76px; 
+}
+
+.fullscreen-center {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;    /* Centrado vertical */
+    height: calc(100vh - 76px);         /* Altura de la ventana */
+    /*border: 2px solid rgb(255, 0, 0);   Solo para visualización */
+  }
+
+.limit_h{
+    max-height: calc(100vh - 100px); /* Ajustar para que no toque el navbar */
+}
+.text-danger {
+    color: red;
+    font-size: 0.875em;
+}

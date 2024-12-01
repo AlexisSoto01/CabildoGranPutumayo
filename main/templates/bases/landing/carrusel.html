@@ -1,0 +1,28 @@
+<!-- bases/landing/carrusel.html -->
+ 
+<div id="carouselExampleDark" class="carousel carousel-dark slide">
+    <div class="carousel-indicators">
+        {% for evento in eventos %}
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+        {% endfor %}
+    </div>
+    <div class="carousel-inner">
+        {% for evento in eventos %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="3000">
+                <img src="{{ evento.imagen.url }}" class="d-block w-100" alt="{{ evento.nombre }}">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>{{ evento.nombre }}</h5>
+                    <p>{{ evento.descripcion }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

@@ -1,0 +1,29 @@
+<!-- login/signup.html -->
+{% extends 'login/bases/cardLogin.html' %}
+{% block title %}Registrarse{% endblock %}
+{% block card_title%}{% endblock %} 
+
+{% block card_content %}
+<form method="post" action="{% url 'signup' %}">
+  {% csrf_token %}
+  <div class="d-flex justify-content-center flex-column align-items-center">
+    <div class="mb-3">{{ form.username }}</div>
+    <div class="mb-3">{{ form.password1 }}</div>
+    <div class="mb-3">{{ form.password2 }}</div>
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger fs-6" role="alert">
+        {{ form.non_field_errors }}
+      </div>
+    {% endif %}
+    <div class="d-grid col-8 mx-auto">
+      <button type="submit" class="btn btn-outline-dark">Registrarse</button>
+    </div>
+  </div>
+</form>
+
+<!-- Botón para ir al index.html -->
+<div class="d-grid col-8 mx-auto mt-3">
+  <a href="{% url 'index' %}" class="btn btn-secondary">Ir al Inicio</a>
+</div>
+
+{% endblock %}

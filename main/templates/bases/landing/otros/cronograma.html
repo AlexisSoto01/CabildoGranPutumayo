@@ -1,0 +1,124 @@
+{% extends 'bases/landing/base.html' %}
+{% load static %}
+{% block title %}Cronograma de Eventos - Gran Putumayo{% endblock %}
+
+{% block content %}
+<section class="container mt-5">
+    <h2 class="text-center mb-4 fw-bold">Cronograma de Eventos</h2>
+    <div class="row">
+        {% for evento in eventos %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    {% if evento.imagen %}
+                        <img src="{{ evento.imagen.url }}" class="card-img-top" alt="{{ evento.nombre }}" style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ evento.nombre }}</h5>
+                        <p class="card-text">{{ evento.descripcion|truncatewords:20 }}</p>
+                        <p class="text-muted">Fecha: {{ evento.fecha_inicio|date:"d M Y" }} - {{ evento.fecha_fin|date:"d M Y" }}</p>
+                        <a href="#" class="btn btn-primary" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#imageModal" 
+                        data-image="{{ evento.imagen.url }}" 
+                        data-title="{{ evento.nombre }}" 
+                        data-description="{{ evento.descripcion }}">
+                        Más información
+                     </a>
+                                         </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12 text-center">
+                <p>No hay eventos favoritos programados en este momento.</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Proyectos Section -->
+<section id="soberania" class="soberania-section py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4">Proyectos</h2>
+        <p class="text-center text-muted mb-5">
+            Explora los pilares de la soberanía alimentaria, medicina natural y economía comunitaria que sustentan la vida en la comunidad del Cabildo Gran Putumayo.
+        </p>
+        
+        <div class="row g-4">
+            <!-- Tarjeta de Soberanía Alimentaria -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <img src="{% static 'img/logos/alimentaria.png' %}" alt="Soberanía Alimentaria" 
+                         class="card-img-top rounded-top" style="height: 200px; object-fit: cover; border-radius: 15px 15px 0 0;">
+                    <div class="card-body">
+                        <h3 class="card-title text-center text-primary">Soberanía Alimentaria</h3>
+                        <p class="card-text text-muted text-center">
+                            La soberanía alimentaria es fundamental para la autonomía de nuestra comunidad. Promovemos el cultivo de alimentos tradicionales y la autosuficiencia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta de Medicina Natural -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <img src="{% static 'img/logos/medicina.png' %}" alt="Medicina Natural" 
+                         class="card-img-top rounded-top" style="height: 200px; object-fit: cover; border-radius: 15px 15px 0 0;">
+                    <div class="card-body">
+                        <h3 class="card-title text-center text-success">Medicina Natural</h3>
+                        <p class="card-text text-muted text-center">
+                            La medicina natural es parte integral de nuestra cultura. Utilizamos plantas medicinales y conocimientos ancestrales para cuidar de nuestra salud.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta de Economía Comunitaria -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <img src="{% static 'img/logos/economia.png' %}" alt="Economía Comunitaria" 
+                         class="card-img-top rounded-top" style="height: 200px; object-fit: cover; border-radius: 15px 15px 0 0;">
+                    <div class="card-body">
+                        <h3 class="card-title text-center text-warning">Economía Comunitaria</h3>
+                        <p class="card-text text-muted text-center">
+                            Fomentamos una economía basada en la solidaridad, el comercio justo y el desarrollo sostenible, respetando nuestro entorno y cultura.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var imageModal = document.getElementById('imageModal');
+        imageModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var image = button.getAttribute('data-image');
+            var title = button.getAttribute('data-title');
+            var description = button.getAttribute('data-description');
+
+            var modalImage = imageModal.querySelector('#modalImage');
+            var modalTitle = imageModal.querySelector('.modal-title');
+            var modalDescription = imageModal.querySelector('#eventDescription');
+
+            modalImage.src = image;
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+        });
+    });
+</script>
+
+
+<style>
+    .card {
+        transition: transform 0.3s;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .row {
+        margin-bottom: 3rem; /* Espaciado entre tarjetas */
+    }
+</style>
+{% endblock %}

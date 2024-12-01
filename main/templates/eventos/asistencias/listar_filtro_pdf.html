@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios del Evento: {{ evento.nombre }}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 5mm; /* Márgenes ajustados para maximizar el espacio */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            color: #333; /* Color de texto oscuro para mejor contraste */
+            background-color: #fff; /* Fondo blanco para una apariencia limpia */
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px; /* Tamaño de fuente del título */
+            margin-bottom: 15px; /* Espaciado inferior */
+            border-bottom: 1px solid #333; /* Línea inferior para separar el título */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Para eliminar espacios entre bordes */
+            margin-bottom: 15px; /* Espaciado inferior para separación */
+        }
+
+        th {
+            background-color: #f0f0f0; /* Fondo gris claro para encabezados */
+            color: #333; /* Texto oscuro en los encabezados */
+            padding: 4px; /* Espacio interno reducido */
+            text-align: center;
+            font-weight: bold; /* Negrita para los encabezados */
+            font-size: 10px; /* Tamaño de fuente reducido para encabezados */
+            border: 1px solid #999; /* Borde gris para encabezados */
+        }
+
+        td {
+            border: 1px solid #999; /* Borde gris suave */
+            padding: 4px; /* Espacio interno reducido en las celdas */
+            text-align: center;
+            font-size: 12px; /* Tamaño de fuente más pequeño para contenido */
+            overflow-wrap: break-word; /* Ajuste de palabras en caso de texto largo */
+        }
+
+        /* Ajustes de ancho de columna para asegurar que se muestren todos los campos */
+        .nombre-completo { width: 20%; }
+        .asistencias { width: 10%; } /* Ajustar según el número de fechas */
+        .faltas { width: 5%; }
+        .acciones { width: 10%; }
+        .numero { width: 3%; } /* Ancho reducido para la columna de conteo */
+        
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 10px; /* Tamaño de fuente pequeño para el pie de página */
+            color: #666; /* Color gris para el texto del pie de página */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Asistencias del evento: {{ evento.nombre }}</h1> <!-- Aquí se agrega el título -->
+
+    <table class="table table-hover fs-6 table-responsive miTabla table-bordered text-center">
+        <thead>
+            <tr>
+                <th class="numero">#</th> <!-- Columna de conteo -->
+                <th class="nombre-completo">Nombre Completo</th>
+                {% for fecha in fechas_evento %}
+                    <th class="asistencias">Fecha: {{ fecha }}</th>
+                {% endfor %}
+                <th class="faltas">Faltas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario, data in asistencias_por_usuario %}
+            <tr>
+                <td>{{ forloop.counter }}</td> <!-- Conteo de registros -->
+                <td>{{ usuario.nombres }} {{ usuario.apellidos }}</td>
+                {% for asistencia in data.asistencias %}
+                    <td>
+                        {% if asistencia %}
+                            <span class="badge bg-success">Asistió</span>
+                        {% else %}
+                            <span class="badge bg-danger">No Asistió</span>
+                        {% endif %}
+                    </td>
+                {% endfor %}
+                <td>{{ data.faltas }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="{{ fechas_evento|length|add:2 }}" class="text-center">No hay registros disponibles.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <footer>
+        © {{ current_year }} Gran Putumayo Los Pastos. Todos los derechos reservados.
+    </footer>
+</body>
+</html>

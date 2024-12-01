@@ -1,0 +1,100 @@
+<!-- usuarios/ver.html -->
+
+{% extends 'bases/card.html' %}
+
+{% block title %}
+    {% if is_admin %}
+        Detalles del Usuario
+    {% else %}
+        Mis Datos
+    {% endif %}
+{% endblock %}
+
+{% block card_title %}
+    {% if is_admin %}
+        Detalles del Usuario
+    {% else %}
+        Mis Datos
+    {% endif %}
+{% endblock %}
+
+{% block card_content %}
+    {% if not usuario %}
+        <div class="alert alert-warning">
+            <strong>Advertencia:</strong> No tienes un perfil creado aún. Por favor, <a href="">completa tu perfil</a> para continuar.
+        </div>
+    {% else %}
+    <div class="row">
+        <div class="col-md-6">
+          <table class="table">
+            <tr>
+              <th>Nombre Completo:</th>
+              <td>{{ usuario.nombres }} {{ usuario.apellidos }}</td>
+            </tr>
+            <tr>
+                <th>Identificación:</th>
+                <td>{{ usuario.identificacion }}</td>
+            </tr>
+            <tr>
+              <th>Fecha de Nacimiento:</th>
+              <td>{{ usuario.fecha_nacimiento }}</td>
+            </tr>
+            <tr>
+                <th>Género:</th>
+                <td>{{ usuario.genero }}</td>
+            </tr>
+            <tr>
+                <th>Celular:</th>
+                <td>{{ usuario.telefono }}</td>
+            </tr>
+          </table>
+        </div>
+      
+        <div class="col-md-6">
+          <table class="table">
+            <tr>
+                <th>Dirección:</th>
+                <td>{{ usuario.direccion }}</td>
+              </tr>
+            <tr>
+            <tr>
+                <th>Documento:</th>
+                <td>{{ usuario.n_documento }}</td>
+            </tr>
+            <th>Estado Civil:</th>
+              <td>{{ usuario.estadoCivil }}</td>
+            </tr>
+            <tr>
+              <th>Escolaridad:</th>
+              <td>{{ usuario.escolaridad }}</td>
+            </tr>
+            <tr>
+              <th>Profesión:</th>
+              <td>{{ usuario.profesion }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+        {% if datos_incompletos %}
+            <div class="alert alert-warning">
+                <strong>Advertencia:</strong> Tienes campos incompletos en tu perfil. Por favor, <a href="">completa tu perfil</a> para continuar.
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {% if is_admin %}
+      <div class="d-grid gap-2 col-3 mx-auto pt-3 pb-3">
+        <div class="d-flex justify-content-center">
+          <a href="{% url 'listar_usuarios' %}" class="btn btn-secondary">Volver a la lista</a>
+        </div>  
+      </div>
+
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% with container_class="w-75" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}

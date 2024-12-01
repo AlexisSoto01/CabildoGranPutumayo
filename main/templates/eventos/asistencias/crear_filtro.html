@@ -1,0 +1,25 @@
+{% extends 'bases/card.html' %}
+{% block title %}Registrar Usuario al Evento: {{ evento.nombre }}{% endblock %}
+{% block card_title %}Registrar Usuario al Evento: {{ evento.nombre }}{% endblock %}
+{% block card_content %}
+{% include 'bases/messages.html' %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }} 
+    <div class="d-grid gap-2 col-3 mx-auto pt-3 pb-3">
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary me-2">Guardar</button>
+            <a class="btn btn-secondary" href="{% url 'listar_eventos' %}">Cancelar</a>
+        </div>  
+    </div>  
+</form>
+
+{{ form.media.js }}  
+    
+{% endblock %}
+{% block content %}
+    {% with container_class="w-50" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}

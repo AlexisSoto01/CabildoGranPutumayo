@@ -1,0 +1,36 @@
+{% extends 'bases/card.html' %}
+{% block title %}Listado de Familias{% endblock %}
+{% block card_title %}Listado de Familias{% endblock %}
+{% block card_content %}
+{% include 'bases/messages.html' %}
+
+<div class="mb-3">
+  <a href="{% url 'crear_familia' %}" class="btn btn-primary">Registrar Familia</a>
+</div>
+
+<table class="table table-hover fs-6 table-responsive miTabla table-bordered text-center">
+  <thead>
+    <tr>
+      <th class="text-center">Nombre Familia</th>
+      <th class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for familia in familias %}
+      <tr>
+        <td>{{ familia.n_familia }}</td>
+        <td>
+          <a href="{% url 'actualizar_familia' familia.pk %}" class="btn fa-solid fa-pen btn-sm" style="color: #ffc107;"></a>
+          <a href="#" class="btn fa-solid fa-trash-can btn-sm btn-dlt" style="color: #dc3545;" data-type="familia" data-pk="{{ familia.pk }}" data-name="{{ familia.n_familia }}"></a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
+{% block content %}
+  {% with container_class="w-75" %}
+    {{ block.super }}
+  {% endwith %}
+{% endblock %}

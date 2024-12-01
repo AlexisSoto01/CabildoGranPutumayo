@@ -1,0 +1,58 @@
+<!-- eventos/actualizar.html -->
+
+{% extends 'bases/card.html' %}
+{% block title %}Registrar Evento{% endblock %}
+{% block card_title %}Registrar Evento{% endblock %}
+{% block card_content %}
+{% include 'bases/messages.html' %}
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <div class="row">
+    <!-- Primera columna -->
+    <div class="col-md-6">
+      <div class="mb-3">
+        {{ form.nombre.label_tag }} {{ form.nombre }}
+      </div>
+      <div class="mb-3">
+        {{ form.fecha_inicio.label_tag }} {{ form.fecha_inicio }}
+      </div>
+    </div>
+
+    <!-- Segunda columna -->
+    <div class="col-md-6">
+      <div class="mb-3">
+        {{ form.imagen.label_tag }} {{ form.imagen }}
+      </div>
+      <div class="mb-3">
+        {{ form.fecha_fin.label_tag }} {{ form.fecha_fin }}
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    {{ form.descripcion.label_tag }} {{ form.descripcion }}
+  </div>
+
+  <div class="d-grid gap-2 col-3 mx-auto pt-3 pb-3">
+    <div class="d-flex justify-content-center">
+      {{ form.es_favorito.label_tag }} {{ form.es_favorito }}
+    </div>
+  </div>
+
+  <div class="d-grid gap-2 col-3 mx-auto pt-3 pb-3">
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary me-2">Guardar</button>
+      <a class="btn btn-secondary" href="{% url 'listar_eventos' %}">Cancelar</a>
+    </div>  
+  </div>
+    
+</form>
+
+{% endblock %}
+{% block content %}
+  {% with container_class="w-50" %}
+    {{ block.super }}
+  {% endwith %}
+{% endblock %}

@@ -1,0 +1,34 @@
+<!-- bases/card.html -->
+ 
+{% extends "bases/base.html" %} 
+{% block content %}
+<div class="fullscreen-center">
+  <div class="row d-flex justify-content-center limit_h {{ container_class }}">
+    <div class="container">
+      <div class="card shadow bg-body-tertiary rounded-4">
+        <div
+          class="card-header d-flex justify-content-between align-items-center"
+        >
+          <p class="text-center mx-auto m-0">
+            {% block card_title %}{% endblock %}
+          </p>
+          <div class="mac-buttons d-flex">
+            <div class="mac-button close bg-danger rounded-circle"></div>
+            <div class="mac-button minimize bg-warning rounded-circle"></div>
+            <div class="mac-button maximize bg-success rounded-circle"></div>
+          </div>
+        </div>
+
+        <div class="card-body ">
+          <blockquote class="blockquote mb-0 bg-body-tertiary rounded-4">
+            {% block card_content %} {% endblock %}
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'bases/modal.html' %}
+
+{% endblock %}
